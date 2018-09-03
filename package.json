@@ -1,8 +1,8 @@
 {
   "name": "deep-array-filter",
   "version": "1.0.0",
-  "description": "Filters an array of objects.",
-  "main": "ng.js",
+  "description": "Filters an array of objects with filters defined in an object.",
+  "main": "index.js",
   "dependencies": {
     "flatten-unflatten": "^1.0.0"
   },
@@ -11,5 +11,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
