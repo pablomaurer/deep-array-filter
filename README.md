@@ -1,7 +1,7 @@
 # deep-array-filter
 Filters an array of objects.
 
-####Define your filter values:
+#### Define your filter values:
 the property `$` will search in all keys.
 ```
 let filter = {
