@@ -1,24 +1,24 @@
 # deep-array-filter
 Filters an array of objects.
 
-#### Define your filter values:
+### Define your filter values:
 the property `$` will search in all keys.
-```
+```js
 let filter = {
-    $: wayne,
+    $: 'wayne',
     firstname: 'joh',
-    age: 18
+    age: 18,
     address: {
         city: 'Basel'
     }
 };
 ```
 
-#### FilterTypes
+### FilterTypes
 Define type of your filters:
 
 If not defined it will default to `includes`.
-```
+```js
 let filterType = {
     age: 'gt'
     address: { 
@@ -27,14 +27,14 @@ let filterType = {
 }
 ```
 
-#### Execute the filter
-```
+### Execute the filter
+```js
 let filteredArr = filter(arr, values, filterTypes)
 ```
 
 <hr>
 
-### Filters
+## Filters
 Currently there are following filters defined:
 - includes - substring matching
 - gt - greater than
@@ -42,18 +42,18 @@ Currently there are following filters defined:
 
 If you need more, open an Issue or send a PR.
 
-#### extend filterTypes
+### extend filterTypes
 If you need more or different filters, you can provide you custom compare functions.
-```
+```js
 let filterType = {
     age: 'customFilter'
-}
+};
 
 let comparator = {
     customFilter: (value, filter) => {
         return value > filter;
     }
-}
+};
 
 let filteredArr = filter(arr, values, filterTypes, comparator)
 ```
