@@ -1,7 +1,14 @@
 {
   "name": "deep-array-filter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Filters an array of objects with filters defined in an object.",
+  "keywords": [
+    "array",
+    "filter",
+    "search",
+    "deep-filter",
+    "deep-search"
+  ],
   "main": "index.js",
   "dependencies": {
     "flatten-unflatten": "^1.0.0"

@@ -1,6 +1,10 @@
 # deep-array-filter
 Filters an array of objects.
 
+```
+npm i deep-array-filter
+```
+
 ### Define your filter values:
 the property `$` will search in all keys.
 ```js
@@ -19,8 +23,8 @@ Define type of your filters:
 
 If not defined it will default to `includes`.
 ```js
-let filterType = {
-    age: 'gt'
+let filterTypes = {
+    age: 'gt',
     address: { 
         city: 'gt' 
     }
