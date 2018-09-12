@@ -8,9 +8,9 @@ npm i deep-array-filter
 ### Define your filter values:
 the property `$` will search in all keys.
 ```js
-let filter = {
+let filterBy = {
     $: 'wayne',
-    firstname: 'joh',
+    firstname: 'john',
     age: 18,
     address: {
         city: 'Basel'
@@ -33,7 +33,7 @@ let filterTypes = {
 
 ### Execute the filter
 ```js
-let filteredArr = filter(arr, values, filterTypes)
+let filteredArr = filter(arr, filterBy, filterTypes)
 ```
 
 <hr>
@@ -59,5 +59,5 @@ let comparator = {
     }
 };
 
-let filteredArr = filter(arr, values, filterTypes, comparator)
+let filteredArr = filter(arr, filterBy, filterTypes, comparator)
 ```
