@@ -31,6 +31,9 @@ function filterSearch(curr, search, comparator) {
     curr = flatten(curr);
 
     for (let key in search) {
+        if (!comparator[key]) {
+            comparator[key] = 'includes';
+        }
         if (curr[key] && !filters[comparator[key]](curr[key], search[key])) { // if not includes stacy
             return false;
         }
