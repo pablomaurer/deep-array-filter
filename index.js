@@ -34,7 +34,7 @@ function filterSearch(curr, search, comparator) {
         if (!comparator[key]) {
             comparator[key] = 'includes';
         }
-        if (curr[key] && !filters[comparator[key]](curr[key], search[key])) { // if not includes stacy
+        if (!curr[key] || !filters[comparator[key]](curr[key], search[key])) { // if not includes stacy
             return false;
         }
     }
@@ -46,7 +46,7 @@ function filterAll(curr, search, comparator) {
 
     let found = true;
     for (let key in search) {
-        if (curr[key] && !filters[comparator[key]](curr[key], search[key])) {
+        if (!curr[key] || !filters[comparator[key]](curr[key], search[key])) {
             found = false;
         }
     }
