@@ -1,6 +1,6 @@
 {
   "name": "deep-array-filter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Filters an array of objects with filters defined in an object.",
   "keywords": [
     "array",

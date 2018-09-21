@@ -1,3 +1,8 @@
+### 1.0.4
+- fix filter all properties, went bad because of last fix
+- searchAll property always defaults to includes comparator
+- a bit refactored
+
 ### 1.0.3
 - fix don't let falsy values, pass the filter
 

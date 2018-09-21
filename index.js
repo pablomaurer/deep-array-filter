@@ -10,7 +10,7 @@ let filters = {
         if (typeof value === 'undefined') {
             return false;
         }
-        // No substring matching against `null`; only match against `null`
+// No substring matching against `null`; only match against `null`
         if ((value === null) || (filter === null)) {
             return value === filter;
         }
@@ -34,28 +34,35 @@ function filterSearch(curr, search, comparator) {
         if (!comparator[key]) {
             comparator[key] = 'includes';
         }
-        if (!curr[key] || !filters[comparator[key]](curr[key], search[key])) { // if not includes stacy
+
+        // search: {name: 123, city: basel}
+        // wenn object.name nicht vorhanden, nicht vergleichen und als nicht gefunden deklarieren
+
+        if (!curr[key] || !filters[comparator[key]](curr[key], search[key])) {
             return false;
         }
     }
     return true;
 
 }
-function filterAll(curr, search, comparator) {
+function filterAll(curr, search, comparator, searchAllValue) {
     curr = flatten(curr, { arrays: true });
 
     let found = true;
+
     for (let key in search) {
+        if (!comparator[key]) {
+            comparator[key] = 'includes';
+        }
+        // search: {name: 123, city: basel}
+        // wenn object.name nicht vorhanden, nicht vergleichen und als nicht gefunden deklarieren
         if (!curr[key] || !filters[comparator[key]](curr[key], search[key])) {
             found = false;
         }
     }
 
     for (let key in curr) {
-        if (!comparator[key]) {
-            comparator[key] = 'includes';
-        }
-        if (filters[comparator[key]](curr[key], search.$) && found) {
+        if (filters.includes(curr[key], searchAllValue) && found) {
             return true
         }
     }
@@ -68,13 +75,16 @@ module.exports = (array, search, comparator, additionalFilters) => {
     search = flatten(search);
     comparator = flatten(comparator);
 
-    let filterFn = filterSearch;
-
     if (search.$) {
-        filterFn = filterAll;
-    }
+        let searchAllValue = search.$;
+        delete search.$;
 
-    return array.filter(item => {
-        return filterFn(item, search, comparator);
-    });
+        return array.filter(item => {
+            return filterAll(item, search, comparator, searchAllValue);
+        });
+    } else {
+        return array.filter(item => {
+            return filterSearch(item, search, comparator);
+        });
+    }
 };
